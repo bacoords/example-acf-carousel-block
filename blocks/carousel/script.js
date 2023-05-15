@@ -4,9 +4,8 @@ initializeBlock = function() {
 		cellAlign: 'left',
 		contain: true,
 		wrapAround: true,
+		draggable: false,
 	});
-
-	console.log('carousel');
 }
 
 

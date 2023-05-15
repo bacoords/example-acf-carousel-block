@@ -14,7 +14,8 @@
 		"align" : ["wide"],
         "color": {
             "text": true,
-            "background": true
+            "background": true,
+			"link": true
         }
 	},
 	"script": ["flickity", "wp-block-acf-carousel"],
