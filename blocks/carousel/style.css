@@ -1,0 +1,21 @@
+.wp-block-acf-carousel{
+
+}
+
+.wp-block-acf-carousel--item{
+	padding: 1rem;
+	width:calc( 100% - 2rem );
+}
+
+
+.wp-block-acf-carousel--item img,
+.wp-block-acf-carousel--item picture{
+	max-width:100%;
+	height: auto;
+}
+
+@media screen and (min-width: 768px) {
+	.wp-block-acf-carousel--item{
+		width:calc( 33.33333% - 2rem );
+	}
+}

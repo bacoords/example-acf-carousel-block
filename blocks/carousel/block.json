@@ -1,0 +1,22 @@
+{
+	"name": "acf/carousel",
+	"apiVersion": "2",
+    "title": "Carousel",
+    "description": "A custom carousel block.",
+    "category": "formatting",
+    "icon": "format-gallery",
+    "keywords": ["carousel"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+	"supports" : {
+		"align" : ["wide"],
+        "color": {
+            "text": true,
+            "background": true
+        }
+	},
+	"script": ["flickity", "wp-block-acf-carousel"],
+	"style": ["flickity", "file:./style.css"]
+}
