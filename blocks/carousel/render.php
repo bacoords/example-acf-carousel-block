@@ -14,12 +14,12 @@
  */
 
 global $post;
-$posts = get_field( 'posts' );
+$posts_field = get_field( 'posts' );
 ?>
 <section <?php echo ( ! $is_preview ) ? get_block_wrapper_attributes() : ''; ?>>
-	<?php if ( $posts ) : ?>
+	<?php if ( $posts_field ) : ?>
 		<div class="is-carousel">
-			<?php foreach ( $posts as $post ) : ?>
+			<?php foreach ( $posts_field as $post ) : ?>
 				<?php setup_postdata( $post ); ?>
 				<div class="wp-block-acf-carousel--item">
 					<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail( 'full' ); ?></a>

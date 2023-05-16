@@ -50,6 +50,7 @@ add_action( 'init', 'example_acf_carousel_block' );
 /**
  * Helper function to import the ACF field group if it doesn't exist.
  *
+ * @link https://gist.github.com/bacoords/986029d783edf320ce93455e0f6b5dd6
  * @return void
  */
 function example_import_acf_field_group() {
