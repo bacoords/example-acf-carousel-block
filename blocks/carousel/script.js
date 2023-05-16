@@ -1,11 +1,16 @@
 // Helper function to initialize our carousel.
 initializeBlock = function() {
-	var flkty = new Flickity( '.is-carousel', {
-		cellAlign: 'left',
-		contain: true,
-		wrapAround: true,
-		draggable: false,
-	});
+	const carousels = document.getElementsByClassName('is-carousel');
+
+	// Loop through all carousels.
+	for ( var i = 0; i < carousels.length; i++ ) {
+		var flkty = new Flickity( carousels[i], {
+			cellAlign: 'left',
+			contain: true,
+			wrapAround: true,
+			draggable: false,
+		});
+	}
 }
 
 
