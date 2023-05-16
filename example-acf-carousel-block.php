@@ -44,3 +44,29 @@ function example_acf_carousel_block() {
 	register_block_type( __DIR__ . '/blocks/carousel' );
 }
 add_action( 'init', 'example_acf_carousel_block' );
+
+
+
+/**
+ * Helper function to import the ACF field group if it doesn't exist.
+ *
+ * @return void
+ */
+function example_import_acf_field_group() {
+	if ( function_exists( 'acf_get_field_group' ) && ! acf_get_field_group( 'group_64629811ee942' ) ) {
+		// Grab the JSON file.
+		$group = file_get_contents( plugin_dir_path( __FILE__ ) . '/blocks/carousel/acf-export.json' );
+		if ( ! $group ) {
+			return;
+		}
+
+		// Decode the JSON.
+		$group = json_decode( $group, true );
+
+		// If not empty, import it.
+		if ( is_array( $group ) && ! empty( $group ) ) {
+			acf_import_field_group( $group [0] );
+		}
+	}
+}
+add_action( 'init', 'example_import_acf_field_group' );
