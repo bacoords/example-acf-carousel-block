@@ -16,7 +16,7 @@
 global $post;
 $posts = get_field( 'posts' );
 ?>
-<section <?php echo get_block_wrapper_attributes(); ?>>
+<section <?php echo ( ! $is_preview ) ? get_block_wrapper_attributes() : ''; ?>>
 	<?php if ( $posts ) : ?>
 		<div class="is-carousel">
 			<?php foreach ( $posts as $post ) : ?>
