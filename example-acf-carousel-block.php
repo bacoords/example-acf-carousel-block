@@ -53,20 +53,29 @@ add_action( 'init', 'example_acf_carousel_block' );
  * @return void
  */
 function example_import_acf_field_group() {
-	if ( function_exists( 'acf_get_field_group' ) && ! acf_get_field_group( 'group_64629811ee942' ) ) {
-		// Grab the JSON file.
-		$group = file_get_contents( plugin_dir_path( __FILE__ ) . '/blocks/carousel/acf-export.json' );
-		if ( ! $group ) {
+	if ( function_exists( 'acf_import_field_group' ) ) {
+
+		// Get all json files from the /acf-field-groups directory.
+		$files = glob( plugin_dir_path( __FILE__ ) . '/acf-field-groups/*.json' );
+
+		// If no files, bail.
+		if ( ! $files ) {
 			return;
 		}
 
-		// Decode the JSON.
-		$group = json_decode( $group, true );
+		// Loop through each file.
+		foreach ( $files as $file ) {
+			// Grab the JSON file.
+			$group = file_get_contents( $file );
 
-		// If not empty, import it.
-		if ( is_array( $group ) && ! empty( $group ) ) {
-			acf_import_field_group( $group [0] );
+			// Decode the JSON.
+			$group = json_decode( $group, true );
+
+			// If not empty, import it.
+			if ( is_array( $group ) && ! empty( $group ) && ! acf_get_field_group( $group[0]['key'] ) ) {
+				acf_import_field_group( $group [0] );
+			}
 		}
 	}
 }
-add_action( 'init', 'example_import_acf_field_group' );
+register_activation_hook( __FILE__, 'example_import_acf_field_group' );
